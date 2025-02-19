@@ -1,0 +1,9 @@
+/* Add your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}

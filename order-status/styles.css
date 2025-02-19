@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f8f8;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.product img {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+}
+
+.product-info p {
+    margin: 0;
+}
+
+.status-bar {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.status-bar span {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.status-bar .completed {
+    background-color: #4caf50;
+    color: #fff;
+    border-color: #4caf50;
+}
+
+.tracking-info a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Event</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Edit Event</h1>
+  <form action="/events/update/<%= event._id %>" method="POST">
+    <label for="name">Event Name:</label>
+    <input type="text" id="name" name="name" value="<%= event.name %>" required>
+    <br>
+    <label for="date">Event Date:</label>
+    <input type="date" id="date" name="date" value="<%= event.date ? new Date(event.date).toISOString().substr(0, 10) : '' %>" required>
+    <br>
+    <label for="guestList">Guest List (comma-separated):</label>
+    <textarea id="guestList" name="guestList"><%= event.guestList.join(',') %></textarea>
+    <br>
+    <button type="submit">Update Event</button>
+  </form>
+  <a href="/events">Back to Events</a>
+</body>
+</html>

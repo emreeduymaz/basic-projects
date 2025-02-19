@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="display_description">Calculator display</string>
+    <string name="display_initial_text">0</string>
+    <string name="result_format">Result: %1$s = %2$s</string>
+    <string name="error_message">Error</string>
+</resources>

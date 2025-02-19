@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "HTunObzOhL/dzMMVi+w2Xk9yCb7zuJJkclZfY+So/2g=",
+  "Source": "OnlineAuctionSystem",
+  "BasePath": "_content/OnlineAuctionSystem",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "OnlineAuctionSystem\\wwwroot",
+      "Source": "OnlineAuctionSystem",
+      "ContentRoot": "C:\\Users\\bovi\\Desktop\\online-auction\\OnlineAuctionSystem\\wwwroot\\",
+      "BasePath": "_content/OnlineAuctionSystem",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\bovi\\Desktop\\online-auction\\OnlineAuctionSystem\\wwwroot\\index.html",
+      "SourceId": "OnlineAuctionSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bovi\\Desktop\\online-auction\\OnlineAuctionSystem\\wwwroot\\",
+      "BasePath": "_content/OnlineAuctionSystem",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}

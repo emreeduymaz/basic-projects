@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\bovi\\Desktop\\online-auction\\OnlineAuctionSystem\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.OnlineAuctionSystem.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.OnlineAuctionSystem.props",
+      "PackagePath": "build\\OnlineAuctionSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.OnlineAuctionSystem.props",
+      "PackagePath": "buildMultiTargeting\\OnlineAuctionSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.OnlineAuctionSystem.props",
+      "PackagePath": "buildTransitive\\OnlineAuctionSystem.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

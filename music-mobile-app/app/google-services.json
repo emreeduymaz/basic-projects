@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "84886029285",
+    "firebase_url": "https://assigntask-aff24-default-rtdb.firebaseio.com",
+    "project_id": "assigntask-aff24",
+    "storage_bucket": "assigntask-aff24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84886029285:android:734050b3ef828fec38250c",
+        "android_client_info": {
+          "package_name": "com.example.task2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyGJIIH2SlmDQWANBIphNZkReXOm_8bLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

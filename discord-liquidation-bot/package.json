@@ -1,0 +1,15 @@
+{
+  "name": "liquidationbot",
+  "version": "0.0.1",
+  "description": "liquidationbot.js",
+  "main": "liquidationbot.js",
+  "scripts": {
+    "test": "node liquidationbot.js"
+  },
+  "author": "Boviente",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "mathjs": "^12.4.1"
+  }
+}

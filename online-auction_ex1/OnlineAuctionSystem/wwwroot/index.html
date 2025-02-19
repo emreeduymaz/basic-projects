@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Auction System</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Online Auction System</h1>
+    <h2>Users</h2>
+    <div>
+        <input type="text" id="username" placeholder="Username">
+        <input type="email" id="email" placeholder="Email">
+        <button onclick="addUser()">Add User</button>
+    </div>
+    <h2>Items</h2>
+    <div>
+        <input type="text" id="itemName" placeholder="Item Name">
+        <input type="text" id="description" placeholder="Description">
+        <input type="number" id="startingBid" placeholder="Starting Bid">
+        <input type="number" id="currentBid" placeholder="Current Bid">
+        <input type="number" id="userId" placeholder="User ID">
+        <button onclick="addItem()">Add Item</button>
+    </div>
+
+    <script>
+        function addUser() {
+            const user = {
+                username: $('#username').val(),
+                email: $('#email').val()
+            };
+
+            $.ajax({
+                url: 'api/users',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(user),
+                success: function (data) {
+                    alert('User added successfully');
+                },
+                error: function (error) {
+                    alert('Error adding user');
+                }
+            });
+        }
+
+        function addItem() {
+            const item = {
+                name: $('#itemName').val(),
+                description: $('#description').val(),
+                startingBid: parseFloat($('#startingBid').val()),
+                currentBid: parseFloat($('#currentBid').val()),
+                userId: parseInt($('#userId').val())
+            };
+
+            $.ajax({
+                url: 'api/items',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(item),
+                success: function (data) {
+                    alert('Item added successfully');
+                },
+                error: function (error) {
+                    alert('Error adding item');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

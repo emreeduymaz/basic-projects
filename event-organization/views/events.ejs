@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Events</h1>
+  <ul>
+    <% events.forEach(event => { %>
+      <li>
+        <%= event.name %> on 
+        <% if (event.date) { %>
+          <%= new Date(event.date).toDateString() %>
+          <li>Guest List</li>
+          <li><%= event.guestList %></li>
+        <% } else { %>
+          <span>No date specified</span>
+        <% } %>
+        <a href="/events/edit/<%= event._id %>">Edit</a>
+        <a href="/events/delete/<%= event._id %>">Delete</a> <!-- Delete link -->
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/events/new">Add New Event</a>
+  <form action="/logout" method="POST">
+    <button type="submit">Logout</button>
+  </form>
+</body>
+</html>

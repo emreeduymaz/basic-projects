@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
+    <title>Okey Game</title>
+    <style>
+        .tile {
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</head>
+<body>
+<div class="yesil">
+    <div class="mavi">
+        <div class="box top-center"></div>
+        <div class="box bottom-center">
+            <ul class="tiles" id="sortable-tiles">
+                {% for tile in starting_tiles %}
+                <li class="tile" style="color:{{tile.color}}; text-align: center;" draggable="true">{{tile.number}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="box right-center"></div>
+        <div class="box left-center"></div>
+        <div class="box drop-southeast" ondrop="drop('southeast')" ondragover="allowDrop()"></div>
+        <div class="box drop-northeast" ondrop="drop('northeast')" ondragover="allowDrop()"></div>
+        <div class="box drop-northwest" ondrop="drop('northwest')" ondragover="allowDrop()"></div>
+        <div class="box drop-southwest" ondrop="drop('southwest')" ondragover="allowDrop()"></div>
+        <div class="box ground-tiles">
+            <ul>
+                <li class="tile" style="text-align: center;" draggable="false">{{ground_tiles|length}}</li>
+            </ul>
+        </div>
+        <div class="box okey-tile">
+            <ul>
+                <li class="tile" style="color:{{okey_tile.color}}; text-align: center;" draggable="false">{{okey_tile.number}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tiles = document.querySelectorAll('.tile');
+        const dropZones = document.querySelectorAll('.drop-southeast, .drop-northeast, .drop-northwest, .drop-southwest');
+
+        tiles.forEach(tile => {
+            tile.addEventListener('dragstart', dragStart);
+        });
+
+        dropZones.forEach(dropZone => {
+            dropZone.addEventListener('dragover', allowDrop);
+            dropZone.addEventListener('drop', dragDrop);
+        });
+
+        function dragStart(e) {
+            e.dataTransfer.setData("text/plain", e.target.innerText);
+            e.dataTransfer.effectAllowed = "move";
+        }
+
+        function allowDrop(e) {
+            e.preventDefault();
+        }
+
+        function dragDrop(e) {
+            e.preventDefault();
+            const draggedTileNumber = e.dataTransfer.getData("text/plain");
+            const newTile = document.createElement('li');
+            newTile.className = 'tile';
+            newTile.innerText = draggedTileNumber;
+            e.target.appendChild(newTile);
+        }
+
+        // Initialize SortableJS for the bottom-center box
+        const sortable = new Sortable(document.getElementById('sortable-tiles'), {
+            animation: 150,
+            ghostClass: 'sortable-ghost'
+        });
+    });
+</script>
+</body>
+</html>

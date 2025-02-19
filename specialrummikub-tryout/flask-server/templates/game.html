@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okey Game</title>
+</head>
+<body>
+    <h1>Okey Game</h1>
+    <h2>Starting Player: {{ starting_player }}</h2>
+    <h3>Starting Player's Tiles:</h3>
+    <ul>
+        {% for tile in starting_tiles %}
+            <li>{{ tile }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Distributed Tiles:</h3>
+    {% for player_tiles in distributed_tiles %}
+        <h4>Player {{ loop.index }}'s Tiles:</h4>
+        <ul>
+            {% for tile in player_tiles %}
+                <li>{{ tile }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <h3>Ground Tiles:</h3>
+    <ul>
+        {% for tile in ground_tiles %}
+            <li>{{ tile }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Okey Tile:</h3>
+    <p>{{ okey_tile }}</p>
+</body>
+</html>
