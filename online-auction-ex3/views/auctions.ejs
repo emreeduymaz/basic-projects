@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auction Page</title>
+</head>
+<body>
+    <h1>Auction List</h1>
+    <ul id="auction-list">
+        <% auctions.forEach(function(auction) { %>
+            <li id="auction-<%= auction._id %>">
+                <h2><%= auction.title %></h2>
+                <p>Description: <%= auction.description %></p>
+                <p>Starting Bid: <%= auction.startingBid %></p>
+                <p>Current Bid: <%= auction.currentBid %></p>
+                <p>End Time: <%= new Date(auction.endTime).toLocaleString() %></p>
+                <button onclick="showEditForm('<%= auction._id %>')">Edit</button>
+                <button onclick="deleteAuction('<%= auction._id %>')">Delete</button>
+            </li>
+        <% }); %>
+    </ul>
+
+    <div id="add-form">
+        <h2>Add New Auction Item</h2>
+        <form id="add-auction-form">
+            <label for="add-title">Title:</label>
+            <input type="text" id="add-title" name="title" required>
+            <br>
+            <label for="add-description">Description:</label>
+            <textarea id="add-description" name="description" required></textarea>
+            <br>
+            <label for="add-startingBid">Starting Bid:</label>
+            <input type="number" id="add-startingBid" name="startingBid" required>
+            <br>
+            <label for="add-currentBid">Current Bid:</label>
+            <input type="number" id="add-currentBid" name="currentBid" required>
+            <br>
+            <label for="add-endTime">End Time:</label>
+            <input type="datetime-local" id="add-endTime" name="endTime" required>
+            <br>
+            <button type="submit">Add Item</button>
+        </form>
+    </div>
+
+    <div id="edit-form" style="display: none;">
+        <h2>Edit Auction Item</h2>
+        <form id="edit-auction-form">
+            <input type="hidden" id="edit-id" name="id">
+            <label for="edit-title">Title:</label>
+            <input type="text" id="edit-title" name="title" required>
+            <br>
+            <label for="edit-description">Description:</label>
+            <textarea id="edit-description" name="description" required></textarea>
+            <br>
+            <label for="edit-startingBid">Starting Bid:</label>
+            <input type="number" id="edit-startingBid" name="startingBid" required>
+            <br>
+            <label for="edit-currentBid">Current Bid:</label>
+            <input type="number" id="edit-currentBid" name="currentBid" required>
+            <br>
+            <label for="edit-endTime">End Time:</label>
+            <input type="datetime-local" id="edit-endTime" name="endTime" required>
+            <br>
+            <button type="submit">Save Changes</button>
+            <button type="button" onclick="hideEditForm()">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        async function addAuction(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('add-title').value;
+            const description = document.getElementById('add-description').value;
+            const startingBid = document.getElementById('add-startingBid').value;
+            const currentBid = document.getElementById('add-currentBid').value;
+            const endTime = document.getElementById('add-endTime').value;
+
+            const auctionData = { title, description, startingBid, currentBid, endTime };
+
+            try {
+                const response = await fetch('/api/auctions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(auctionData)
+                });
+
+                if (response.ok) {
+                    const newAuction = await response.json();
+                    addAuctionToList(newAuction);
+                    document.getElementById('add-auction-form').reset();
+                } else {
+                    console.error('Error adding auction', await response.json());
+                }
+            } catch (error) {
+                console.error('Error adding auction', error);
+            }
+        }
+
+        function addAuctionToList(auction) {
+            const auctionList = document.getElementById('auction-list');
+            const auctionItem = document.createElement('li');
+            auctionItem.id = `auction-${auction._id}`;
+            auctionItem.innerHTML = `
+                <h2>${auction.title}</h2>
+                <p>Description: ${auction.description}</p>
+                <p>Starting Bid: ${auction.startingBid}</p>
+                <p>Current Bid: ${auction.currentBid}</p>
+                <p>End Time: ${new Date(auction.endTime).toLocaleString()}</p>
+                <button onclick="showEditForm('${auction._id}')">Edit</button>
+                <button onclick="deleteAuction('${auction._id}')">Delete</button>
+            `;
+            auctionList.appendChild(auctionItem);
+        }
+
+        function showEditForm(id) {
+            const auction = document.getElementById(`auction-${id}`);
+            document.getElementById('edit-id').value = id;
+            document.getElementById('edit-title').value = auction.querySelector('h2').innerText;
+            document.getElementById('edit-description').value = auction.querySelector('p:nth-child(2)').innerText.split(': ')[1];
+            document.getElementById('edit-startingBid').value = auction.querySelector('p:nth-child(3)').innerText.split(': ')[1];
+            document.getElementById('edit-currentBid').value = auction.querySelector('p:nth-child(4)').innerText.split(': ')[1];
+            document.getElementById('edit-endTime').value = auction.querySelector('p:nth-child(5)').innerText.split(': ')[1];
+            document.getElementById('edit-form').style.display = 'block';
+        }
+
+        function hideEditForm() {
+            document.getElementById('edit-form').style.display = 'none';
+        }
+
+        async function deleteAuction(id) {
+            if (!confirm('Are you sure you want to delete this auction item?')) return;
+
+            try {
+                const response = await fetch(`/api/auctions/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    document.getElementById(`auction-${id}`).remove();
+                } else {
+                    console.error('Error deleting auction', await response.json());
+                }
+            } catch (error) {
+                console.error('Error deleting auction', error);
+            }
+        }
+
+        document.getElementById('add-auction-form').addEventListener('submit', addAuction);
+
+        document.getElementById('edit-auction-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const id = document.getElementById('edit-id').value;
+            const title = document.getElementById('edit-title').value;
+            const description = document.getElementById('edit-description').value;
+            const startingBid = document.getElementById('edit-startingBid').value;
+            const currentBid = document.getElementById('edit-currentBid').value;
+            const endTime = document.getElementById('edit-endTime').value;
+
+            const auctionData = { title, description, startingBid, currentBid, endTime };
+
+            try {
+                const response = await fetch(`/api/auctions/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(auctionData)
+                });
+
+                if (response.ok) {
+                    const updatedAuction = await response.json();
+                    updateAuctionInList(updatedAuction);
+                    hideEditForm();
+                } else {
+                    console.error('Error editing auction', await response.json());
+                }
+            } catch (error) {
+                console.error('Error editing auction', error);
+            }
+        });
+
+        function updateAuctionInList(auction) {
+            const auctionItem = document.getElementById(`auction-${auction._id}`);
+            auctionItem.querySelector('h2').innerText = auction.title;
+            auctionItem.querySelector('p:nth-child(2)').innerText = `Description: ${auction.description}`;
+            auctionItem.querySelector('p:nth-child(3)').innerText = `Starting Bid: ${auction.startingBid}`;
+            auctionItem.querySelector('p:nth-child(4)').innerText = `Current Bid: ${auction.currentBid}`;
+            auctionItem.querySelector('p:nth-child(5)').innerText = `End Time: ${new Date(auction.endTime).toLocaleString()}`;
+        }
+    </script>
+</body>
+</html>
