@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "94d97179-8008-465f-9bb2-2fb24d32251e",
+		"name": "online.auction.system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26414015"
+	},
+	"item": [
+		{
+			"name": "User_API_Testing",
+			"item": [
+				{
+					"name": "Add User To The System",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_Name\": \"Emma\",\r\n    \"last_Name\": \"Williams\",\r\n    \"user_Name\": \"emmawilliams\",\r\n    \"email\": \"emmawilliams@example.com\",\r\n    \"password\": \"emma321\",\r\n    \"address\": \"654 Street,Canada, Toronto\",\r\n    \"phone\": \"3322114455\"\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/addUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"addUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/getAllUsers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/userInfo/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"userInfo",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"first_Name\": \"Alicaaa\",\r\n    \"last_Name\": \"Johnson\",\r\n    \"user_Name\": \"alicejohnson\",\r\n    \"email\": \"alicejohnson2121@example.com\",\r\n    \"password\": \"alice456\",\r\n    \"address\": \"321 Street,Lodz,Poland\",\r\n    \"phone\": \"5544332211\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/deleteUser/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"deleteUser",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item_API_Test",
+			"item": [
+				{
+					"name": "Add Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Antique Desk\",\r\n    \"description\": \"A handcrafted mahogany desk from the early 19th century.\",\r\n    \"start_price\": 3500.00,\r\n    \"user\": {\r\n        \"id\": 3\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Item/addItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Item",
+								"addItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addItem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Vintage Car\",\r\n    \"description\": \"A classic 1960s Ford Mustang in mint condition.\",\r\n    \"start_price\": 25000.00,\r\n    \"user\": {\r\n        \"id\": 2\r\n    }\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Item/addItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Item",
+								"addItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Item/ItemInfo/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Item",
+								"ItemInfo",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Item/getAllItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Item",
+								"getAllItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Item/deleteItem/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Item",
+								"deleteItem",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"id\": 1,\r\n        \"name\": \"Vintage Watch\",\r\n        \"description\": \"A beautifully preserved vintage watch from the 1950s. gell vatandas gell\",\r\n        \"start_price\": 1500.0,\r\n        \"user\": {\r\n            \"id\": 1,\r\n            \"first_Name\": \"John\",\r\n            \"last_Name\": \"Doe\",\r\n            \"user_Name\": \"johndoe\",\r\n            \"email\": \"johndoe@example.com\",\r\n            \"password\": \"secret123\",\r\n            \"address\": \"123 Street, Warsaw, Poland\",\r\n            \"phone\": \"1234567890\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Item/updateItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Item",
+								"updateItem"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment-API-Test",
+			"item": [
+				{
+					"name": "http://localhost:9090/api/payments/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"total\": 100.0,\r\n    \"currency\": \"USD\",\r\n    \"method\": \"credit_card\",\r\n    \"intent\": \"sale\",\r\n    \"description\": \"Test Payment\",\r\n    \"cancelUrl\": \"http://your-domain.com/cancel\",\r\n    \"successUrl\": \"http://your-domain.com/success\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/payments/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"payments",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
